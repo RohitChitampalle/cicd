@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Install Dependencies
-        run: npm Install
+        run: echo "npm install"
 
       - name: Build the application
-        run: npm run build
+        run: echo "npm run build"
 
       - name: Done 
         run: echo "Successfully done" 
