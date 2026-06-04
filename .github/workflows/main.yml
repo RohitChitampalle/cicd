@@ -19,5 +19,5 @@ jobs:
       - name: Build the application
         run: echo "npm run build"
 
-      - name: Done 
-        run: echo "Successfully done" 
+      - name: Deployment 
+        run: echo "Deployment Successfully done" 
