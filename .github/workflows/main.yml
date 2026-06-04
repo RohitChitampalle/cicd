@@ -6,8 +6,9 @@ on:
       - main
 
 jobs:
+
   build:
-     
+
     runs-on: ubuntu-latest
 
     steps:
@@ -19,5 +20,19 @@ jobs:
       - name: Build the application
         run: echo "npm run build"
 
-      - name: Deployment 
-        run: echo "Deployment Successfully done" 
+  test:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test 
+        run: echo "Testing successfully completed"
+  
+  deployment:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Deployment"
+        run: echo "deployment successfully completed"
