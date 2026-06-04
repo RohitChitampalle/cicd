@@ -1,0 +1,23 @@
+name: CICD - Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+     
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install Dependencies
+        run: npm Install
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Done 
+        run: echo "Successfully done" 
