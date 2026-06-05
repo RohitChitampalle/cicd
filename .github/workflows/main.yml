@@ -1,4 +1,4 @@
-name: CICD - Pipeline
+name: CICD - Pipeline for upload and download
 
 on:
   push:
@@ -7,32 +7,21 @@ on:
 
 jobs:
 
-  build:
-
+  uploadfile:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Install Dependencies
-        run: echo "npm install"
-
-      - name: Build the application
-        run: echo "npm run build"
-
-  test:
-    needs: build
-
+      - uses: actions/upload-artifact@v7
+        with: 
+          name: all files
+          path: .
+      - name: Upload file
+        run : echo "Uploading Files....."
+        
+  download:
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Test 
-        run: echo "Testing successfully completed"
-  
-  deployment:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: "Deployment"
-        run: echo "deployment successfully completed"
+    steps: 
+      - uses: actions/download-artifact@v8
+        with:
+          name: all files
+      - name: List the downloaded file
+        run: ls -l
