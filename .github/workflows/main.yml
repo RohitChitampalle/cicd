@@ -18,6 +18,7 @@ jobs:
         run : echo "Uploading Files....."
         
   download:
+    needs: uploadfile
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/download-artifact@v7
