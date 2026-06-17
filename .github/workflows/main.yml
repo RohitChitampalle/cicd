@@ -18,7 +18,7 @@ jobs:
       - name: checkout repo
         run: echo "checkout to repo"
       - name: Upload artifact
-        run: "Upload Artifact the build file"
+        run: echo "Upload Artifact the build file"
 
   test:
     runs-on: ubuntu-latest
