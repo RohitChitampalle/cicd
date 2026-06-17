@@ -21,6 +21,7 @@ jobs:
         run: echo "Upload Artifact the build file"
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
