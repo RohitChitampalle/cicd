@@ -1,4 +1,4 @@
-name: CICD - Pipeline for upload and download
+name: practicing CICD
 
 on:
   push:
@@ -6,22 +6,41 @@ on:
       - main
 
 jobs:
-
-  uploadfile:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/upload-artifact@v7
-        with: 
-          name: all files
-          path: .
-      - name: Upload file
-        run : echo "Uploading Files....."
-        
-  download:
+      - name: Setup Environment
+        run : echo "Setting up Environment"
+      - name: Intall Dependencies
+        run: echo "Installed Dependencies"
+      - name: Give Build 
+        run: echo "Npm Build"
+      - name: checkout repo
+        run: echo "checkout to repo"
+      - name: Upload artifact
+        run: "Upload Artifact the build file"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        run: echo "checkout to repo"
+      - name: Download Artifacts
+        run: echo "Downloading artifacts"
+      - name: testing phase
+        run: echo "npm test"
+      - name: sonarqube 
+        run: echo "security testing"
+      - name: scan the image
+        run: echo "scanning the image using Trivy"
+
+  deploy:
+    needs: test
+    if: ${{ success() }}
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/download-artifact@v8
-        with:
-          name: all files
-      - name: List the downloaded file
-        run: ls -l
+      - name: argocd 
+        run: echo "deploy latest image in kubernetes"
+      - name: Successfully Done
+        run: echo "Deployment Done"
+      
